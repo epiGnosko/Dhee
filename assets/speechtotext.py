@@ -1,8 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import dotenv_values
 import os
 # import mtranslate as mt
@@ -73,9 +71,7 @@ chrome_options.add_argument("--window-position=-10000,0")  # Move the window off
 chrome_options.add_argument("--headless=new")
 
 
-service = Service(ChromeDriverManager().install())
-
-driver = webdriver.Chrome(service=service,options=chrome_options)
+driver = webdriver.Firefox()
 
 tempDirpath = rf"{current_dir}/Frontend/Files"
 
