@@ -1,0 +1,689 @@
+{
+  "Process Management": {
+    "Easy": [
+      {
+        "question": "What is a process?",
+        "options": [
+          "A program in execution",
+          "A file on disk",
+          "A user",
+          "A network connection"
+        ],
+        "correct": "A program in execution"
+      },
+      {
+        "question": "Which of the following is NOT a state of a process?",
+        "options": [
+          "Ready",
+          "Running",
+          "Blocked",
+          "Compiled"
+        ],
+        "correct": "Compiled"
+      },
+      {
+        "question": "What component stores process context information?",
+        "options": [
+          "Disk scheduler",
+          "Process Control Block",
+          "Memory manager",
+          "File descriptor table"
+        ],
+        "correct": "Process Control Block"
+      }
+    ],
+    "Medium": [
+      {
+        "question": "Which system call is used to create a new process in UNIX/Linux?",
+        "options": [
+          "spawn()",
+          "exec()",
+          "fork()",
+          "clone()"
+        ],
+        "correct": "fork()"
+      },
+      {
+        "question": "What is the primary purpose of context switching?",
+        "options": [
+          "To switch between user and kernel mode",
+          "To reload the operating system",
+          "To switch the CPU from one process to another",
+          "To swap memory pages"
+        ],
+        "correct": "To switch the CPU from one process to another"
+      },
+      {
+        "question": "Which of the following is a lightweight process?",
+        "options": [
+          "Kernel process",
+          "User program",
+          "Thread",
+          "Daemon"
+        ],
+        "correct": "Thread"
+      }
+    ],
+    "Hard": [
+      {
+        "question": "In a parent–child process relationship, how are signals delivered when the parent terminates first?",
+        "options": [
+          "Signals are lost",
+          "Signals are queued",
+          "Signals are re-directed to init",
+          "Child inherits parent's PID"
+        ],
+        "correct": "Signals are re-directed to init"
+      },
+      {
+        "question": "Compare clone() vs fork() in Linux. Which clone flags allow shared memory and file descriptors?",
+        "options": [
+          "CLONE_VM | CLONE_FS",
+          "CLONE_NEWUSER | CLONE_NEWNS",
+          "CLONE_FILES | CLONE_SIGHAND",
+          "CLONE_IO | CLONE_THREAD"
+        ],
+        "correct": "CLONE_FILES | CLONE_SIGHAND"
+      },
+      {
+        "question": "Evaluate the impact of excessive context switches on system performance. What metric increases most?",
+        "options": [
+          "CPU utilization",
+          "Throughput",
+          "Waiting time",
+          "Context switch overhead"
+        ],
+        "correct": "Context switch overhead"
+      }
+    ]
+  },
+  "CPU Scheduling": {
+    "Easy": [
+      {
+        "question": "Which scheduling algorithm gives each process a fixed time slice?",
+        "options": [
+          "First-Come First-Served",
+          "Shortest Job First",
+          "Round Robin",
+          "Priority Scheduling"
+        ],
+        "correct": "Round Robin"
+      },
+      {
+        "question": "In FCFS scheduling, the metric most affected is:",
+        "options": [
+          "Response time",
+          "Throughput",
+          "Turnaround time",
+          "Page fault rate"
+        ],
+        "correct": "Turnaround time"
+      },
+      {
+        "question": "Which scheduling queue contains processes waiting for CPU time?",
+        "options": [
+          "Device queue",
+          "Ready queue",
+          "I/O queue",
+          "Job pool"
+        ],
+        "correct": "Ready queue"
+      }
+    ],
+    "Medium": [
+      {
+        "question": "What is convoy effect in scheduling?",
+        "options": [
+          "Long jobs block shorter jobs",
+          "I/O bound processes preempt CPU",
+          "All processes finish at same time",
+          "CPU idle despite ready processes"
+        ],
+        "correct": "Long jobs block shorter jobs"
+      },
+      {
+        "question": "Which algorithm can suffer from starvation?",
+        "options": [
+          "Round Robin",
+          "Shortest Remaining Time First",
+          "Multilevel Queue with aging",
+          "First-Come First-Served"
+        ],
+        "correct": "Shortest Remaining Time First"
+      },
+      {
+        "question": "How is the time quantum chosen in Round Robin?",
+        "options": [
+          "Equal to context switch time",
+          "Large enough to approximate FCFS",
+          "Half of average burst time",
+          "Arbitrary constant"
+        ],
+        "correct": "Large enough to approximate FCFS"
+      }
+    ],
+    "Hard": [
+      {
+        "question": "Design a scheduling algorithm combining priority and time slices to reduce starvation. Which mechanism helps aging?",
+        "options": [
+          "Increasing time slice over time",
+          "Decreasing priority of long waiters",
+          "Incrementing priority of waiting processes",
+          "Random priority boost"
+        ],
+        "correct": "Incrementing priority of waiting processes"
+      },
+      {
+        "question": "In a multiprocessor system, which scheduling approach balances load best?",
+        "options": [
+          "Central queue with multiple CPUs",
+          "Per-processor queue without migration",
+          "Static CPU affinity",
+          "Randomized assignment"
+        ],
+        "correct": "Central queue with multiple CPUs"
+      },
+      {
+        "question": "Evaluate the worst-case waiting time in preemptive Shortest Remaining Time First.",
+        "options": [
+          "Sum of all other burst times",
+          "Maximum single burst time",
+          "Zero",
+          "Average burst time"
+        ],
+        "correct": "Sum of all other burst times"
+      }
+    ]
+  },
+  "Memory Management": {
+    "Easy": [
+      {
+        "question": "What is virtual memory?",
+        "options": [
+          "Physical RAM only",
+          "Swap space only",
+          "An abstraction allowing processes to use more memory than physically available",
+          "Cache memory"
+        ],
+        "correct": "An abstraction allowing processes to use more memory than physically available"
+      },
+      {
+        "question": "Which structure maps virtual addresses to physical frames?",
+        "options": [
+          "Page table",
+          "Segment table",
+          "Process table",
+          "Descriptor table"
+        ],
+        "correct": "Page table"
+      },
+      {
+        "question": "What is a page fault?",
+        "options": [
+          "Accessing an invalid instruction",
+          "Accessing a page not in physical memory",
+          "Division by zero",
+          "Buffer overflow"
+        ],
+        "correct": "Accessing a page not in physical memory"
+      }
+    ],
+    "Medium": [
+      {
+        "question": "Which replacement algorithm approximates LRU efficiently?",
+        "options": [
+          "FIFO",
+          "Clock",
+          "Random",
+          "Optimal"
+        ],
+        "correct": "Clock"
+      },
+      {
+        "question": "What problem does internal fragmentation cause?",
+        "options": [
+          "Unused memory within allocated blocks",
+          "Processes swapped out too often",
+          "Page table overflow",
+          "Invalid address access"
+        ],
+        "correct": "Unused memory within allocated blocks"
+      },
+      {
+        "question": "In a two-level page table, what does the first-level index select?",
+        "options": [
+          "Physical frame",
+          "Second-level page table",
+          "Offset within page",
+          "Swap file"
+        ],
+        "correct": "Second-level page table"
+      }
+    ],
+    "Hard": [
+      {
+        "question": "Compare Belady's anomaly in FIFO vs LRU. Which one can suffer and why?",
+        "options": [
+          "FIFO suffers due to lack of stack property; LRU does not",
+          "LRU suffers due to stack property; FIFO does not",
+          "Both suffer equally",
+          "Neither suffers"
+        ],
+        "correct": "FIFO suffers due to lack of stack property; LRU does not"
+      },
+      {
+        "question": "Design an address translation scheme for variable-size pages. What overhead increases?",
+        "options": [
+          "Page table size",
+          "TLB misses",
+          "External fragmentation",
+          "Internal fragmentation"
+        ],
+        "correct": "External fragmentation"
+      },
+      {
+        "question": "Evaluate the working set model. Which metric controls thrashing?",
+        "options": [
+          "Page fault rate",
+          "WSS size",
+          "CPU utilization",
+          "Process count"
+        ],
+        "correct": "Page fault rate"
+      }
+    ]
+  },
+  "File Systems": {
+    "Easy": [
+      {
+        "question": "Which operation creates a new file?",
+        "options": [
+          "open()",
+          "read()",
+          "mkdir()",
+          "unlink()"
+        ],
+        "correct": "open()"
+      },
+      {
+        "question": "What does the inode contain?",
+        "options": [
+          "File data",
+          "Filename",
+          "Metadata and pointers to data blocks",
+          "User input"
+        ],
+        "correct": "Metadata and pointers to data blocks"
+      },
+      {
+        "question": "Which call removes a file?",
+        "options": [
+          "rmdir()",
+          "unlink()",
+          "delete()",
+          "remove()"
+        ],
+        "correct": "unlink()"
+      }
+    ],
+    "Medium": [
+      {
+        "question": "What is the purpose of journaling in file systems?",
+        "options": [
+          "Speed up reads",
+          "Track metadata changes to recover from crashes",
+          "Encrypt files",
+          "Compress data"
+        ],
+        "correct": "Track metadata changes to recover from crashes"
+      },
+      {
+        "question": "Which allocation strategy reduces external fragmentation?",
+        "options": [
+          "Contiguous",
+          "Linked",
+          "Indexed",
+          "Extent-based"
+        ],
+        "correct": "Indexed"
+      },
+      {
+        "question": "How does copy-on-write work during file duplication?",
+        "options": [
+          "Copies data immediately",
+          "Shares blocks until write occurs",
+          "Deletes original",
+          "Pre-allocates new blocks"
+        ],
+        "correct": "Shares blocks until write occurs"
+      }
+    ],
+    "Hard": [
+      {
+        "question": "Compare journaling vs log-structured file systems. Which optimizes small writes?",
+        "options": [
+          "Journaling FS",
+          "Log-structured FS",
+          "Both equal",
+          "Neither"
+        ],
+        "correct": "Log-structured FS"
+      },
+      {
+        "question": "Design a B+ tree index for a file system. What is the typical order to minimize disk I/O?",
+        "options": [
+          "2–3",
+          "4–5",
+          "50–100",
+          "1000+"
+        ],
+        "correct": "50–100"
+      },
+      {
+        "question": "Evaluate extent-based allocation. Which fragmentation remains?",
+        "options": [
+          "Internal only",
+          "External only",
+          "Both internal and external",
+          "None"
+        ],
+        "correct": "Internal only"
+      }
+    ]
+  },
+  "Deadlocks": {
+    "Easy": [
+      {
+        "question": "Which is a necessary condition for deadlock?",
+        "options": [
+          "Mutual exclusion",
+          "CPU bound process",
+          "Large memory",
+          "Preemptive resources"
+        ],
+        "correct": "Mutual exclusion"
+      },
+      {
+        "question": "What does 'circular wait' imply?",
+        "options": [
+          "Processes wait in round-robin",
+          "Chain of processes each waiting for next",
+          "Waiting for I/O",
+          "Infinite loop in code"
+        ],
+        "correct": "Chain of processes each waiting for next"
+      },
+      {
+        "question": "Which method can prevent deadlock by eliminating hold-and-wait?",
+        "options": [
+          "Request all resources at once",
+          "Use FIFO scheduling",
+          "Use multithreading",
+          "Increase memory"
+        ],
+        "correct": "Request all resources at once"
+      }
+    ],
+    "Medium": [
+      {
+        "question": "How does the Banker's algorithm determine safety?",
+        "options": [
+          "By checking resource utilization",
+          "By simulating allocation to see if all can finish",
+          "By counting processes",
+          "By locking all resources"
+        ],
+        "correct": "By simulating allocation to see if all can finish"
+      },
+      {
+        "question": "Which strategy avoids deadlock by resource ordering?",
+        "options": [
+          "Dynamic resource request",
+          "Static ordering of resource types",
+          "Mutual exclusion",
+          "Priority inversion"
+        ],
+        "correct": "Static ordering of resource types"
+      },
+      {
+        "question": "In deadlock detection, what does the wait-for graph show?",
+        "options": [
+          "Process priorities",
+          "Resources available",
+          "Which process waits for which",
+          "Memory usage"
+        ],
+        "correct": "Which process waits for which"
+      }
+    ],
+    "Hard": [
+      {
+        "question": "Design an algorithm to recover from deadlock with minimal rollback.",
+        "options": [
+          "Abort all processes",
+          "Preempt and rollback one process at a time",
+          "Use FIFO scheduling",
+          "Kill lowest priority first"
+        ],
+        "correct": "Preempt and rollback one process at a time"
+      },
+      {
+        "question": "Evaluate complexity of Banker's algorithm. What is its worst-case time?",
+        "options": [
+          "O(n)",
+          "O(mn²)",
+          "O(n³)",
+          "O(m+n)"
+        ],
+        "correct": "O(mn²)"
+      },
+      {
+        "question": "Compare deadlock prevention vs avoidance. Which requires more runtime information?",
+        "options": [
+          "Prevention",
+          "Avoidance",
+          "Detection",
+          "Ignorance"
+        ],
+        "correct": "Avoidance"
+      }
+    ]
+  },
+  "Concurrency & Synchronization": {
+    "Easy": [
+      {
+        "question": "What is a critical section?",
+        "options": [
+          "Code accessing shared resource",
+          "Kernel code",
+          "Idle loop",
+          "Interrupt handler"
+        ],
+        "correct": "Code accessing shared resource"
+      },
+      {
+        "question": "Which primitive enforces mutual exclusion?",
+        "options": [
+          "Semaphore",
+          "Page table",
+          "Buffer",
+          "Scheduler"
+        ],
+        "correct": "Semaphore"
+      },
+      {
+        "question": "What problem does busy-waiting cause?",
+        "options": [
+          "High CPU usage",
+          "Memory leak",
+          "Deadlock always",
+          "I/O bound tasks"
+        ],
+        "correct": "High CPU usage"
+      }
+    ],
+    "Medium": [
+      {
+        "question": "What is the difference between binary and counting semaphores?",
+        "options": [
+          "Binary allows >1 resource; counting only 0/1",
+          "Counting allows >1 resource; binary only 0/1",
+          "They are identical",
+          "Counting used only in file systems"
+        ],
+        "correct": "Counting allows >1 resource; binary only 0/1"
+      },
+      {
+        "question": "How does monitor differ from semaphore?",
+        "options": [
+          "Monitor is high-level, with automatic locking",
+          "Monitor is low-level",
+          "Semaphore is language construct",
+          "They are same"
+        ],
+        "correct": "Monitor is high-level, with automatic locking"
+      },
+      {
+        "question": "Which solution addresses readers-writers fairness?",
+        "options": [
+          "Give priority to readers",
+          "Give priority to writers",
+          "Use a queue for requests",
+          "Disable locking"
+        ],
+        "correct": "Use a queue for requests"
+      }
+    ],
+    "Hard": [
+      {
+        "question": "Design a lock-free stack algorithm. Which atomic operation is essential?",
+        "options": [
+          "Test-and-set",
+          "Compare-and-swap",
+          "Swap",
+          "Fetch-and-add"
+        ],
+        "correct": "Compare-and-swap"
+      },
+      {
+        "question": "Evaluate priority inversion. Which mechanism solves it?",
+        "options": [
+          "Priority inheritance",
+          "Semaphore reduction",
+          "Busy-waiting",
+          "Disable interrupts"
+        ],
+        "correct": "Priority inheritance"
+      },
+      {
+        "question": "Compare barrier vs condition variable. Which waits for group?",
+        "options": [
+          "Barrier",
+          "Condition variable",
+          "Semaphore",
+          "Mutex"
+        ],
+        "correct": "Barrier"
+      }
+    ]
+  },
+  "I/O & Device Management": {
+    "Easy": [
+      {
+        "question": "What is a device driver?",
+        "options": [
+          "User program",
+          "Kernel module that controls hardware",
+          "File system type",
+          "Network protocol"
+        ],
+        "correct": "Kernel module that controls hardware"
+      },
+      {
+        "question": "Which I/O mode uses polling?",
+        "options": [
+          "Programmed I/O",
+          "Interrupt-driven I/O",
+          "DMA",
+          "Buffered I/O"
+        ],
+        "correct": "Programmed I/O"
+      },
+      {
+        "question": "What does DMA stand for?",
+        "options": [
+          "Direct Mapping Access",
+          "Dual Memory Allocation",
+          "Direct Memory Access",
+          "Dynamic Memory Allocation"
+        ],
+        "correct": "Direct Memory Access"
+      }
+    ],
+    "Medium": [
+      {
+        "question": "How does interrupt-driven I/O improve efficiency?",
+        "options": [
+          "Eliminates device interrupts",
+          "CPU continues until interrupt occurs",
+          "Uses polling",
+          "Disables DMA"
+        ],
+        "correct": "CPU continues until interrupt occurs"
+      },
+      {
+        "question": "Which buffer type helps in smoothing data rate differences?",
+        "options": [
+          "Circular buffer",
+          "Page buffer",
+          "Swap buffer",
+          "Cache buffer"
+        ],
+        "correct": "Circular buffer"
+      },
+      {
+        "question": "In DMA, who initiates the data transfer?",
+        "options": [
+          "CPU",
+          "DMA controller",
+          "Kernel",
+          "Device driver"
+        ],
+        "correct": "DMA controller"
+      }
+    ],
+    "Hard": [
+      {
+        "question": "Design an I/O scheduling algorithm combining SSTF and FCFS. What is main drawback?",
+        "options": [
+          "Increased seek time",
+          "Starvation of far requests",
+          "High CPU overhead",
+          "Buffer overflow"
+        ],
+        "correct": "Starvation of far requests"
+      },
+      {
+        "question": "Compare memory-mapped I/O vs port-mapped I/O. Which reduces instruction overhead?",
+        "options": [
+          "Port-mapped I/O",
+          "Memory-mapped I/O",
+          "Both equal",
+          "Neither"
+        ],
+        "correct": "Memory-mapped I/O"
+      },
+      {
+        "question": "Evaluate impact of large block size on throughput vs latency.",
+        "options": [
+          "Increases both",
+          "Increases throughput, increases latency",
+          "Decreases throughput, decreases latency",
+          "No effect"
+        ],
+        "correct": "Increases throughput, increases latency"
+      }
+    ]
+  }
+}
+

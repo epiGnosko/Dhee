@@ -1,0 +1,32 @@
+:root {
+    /* Gruvbox-material color palette - HSLA values */
+    --gruvbox-bg0: hsla(31, 9%, 16%, 1);         /* #282828 */
+    --gruvbox-bg1: hsla(28, 11%, 22%, 1);        /* #3c3836 */
+    --gruvbox-bg2: hsla(28, 12%, 29%, 1);        /* #504945 */
+    --gruvbox-bg3: hsla(28, 13%, 37%, 1);        /* #665c54 */
+    --gruvbox-fg1: hsla(40, 38%, 79%, 1);        /* #ebdbb2 */
+    --gruvbox-fg2: hsla(40, 29%, 73%, 1);        /* #d5c4a1 */
+    --gruvbox-fg3: hsla(40, 19%, 66%, 1);        /* #bdae93 */
+    --gruvbox-yellow: hsla(45, 93%, 58%, 1);     /* #fabd2f */
+    --gruvbox-blue: hsla(202, 27%, 57%, 1);      /* #83a598 */
+    --gruvbox-green: hsla(61, 65%, 45%, 1);      /* #b8bb26 */
+    --gruvbox-orange: hsla(25, 99%, 55%, 1);     /* #fe8019 */
+    --gruvbox-red: hsla(4, 92%, 59%, 1);         /* #fb4934 */
+    --gruvbox-purple: hsla(333, 42%, 68%, 1);    /* #d3869b */
+    --gruvbox-aqua: hsla(142, 25%, 65%, 1);      /* #8ec07c */
+
+    /* Additional color variations */
+    --gruvbox-green-hover: hsla(61, 65%, 40%, 1);  /* Darker green for hover */
+    --gruvbox-red-alpha: hsla(4, 92%, 59%, 0.1);   /* Red with transparency */
+    --gruvbox-green-alpha: hsla(61, 65%, 45%, 0.1); /* Green with transparency */
+    --gruvbox-yellow-alpha: hsla(45, 93%, 58%, 0.1); /* Yellow with transparency */
+
+    /* Shadow colors */
+    --shadow-dark: hsla(0, 0%, 0%, 0.3);
+    --shadow-medium: hsla(0, 0%, 0%, 0.2);
+    --shadow-light: hsla(0, 0%, 0%, 0.1);
+
+    /* Focus and interaction colors */
+    --focus-shadow: hsla(45, 93%, 58%, 0.1);  /* Yellow focus glow */
+    --button-shadow: hsla(61, 65%, 45%, 0.3); /* Green button shadow */
+}

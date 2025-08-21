@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroids Orbiting Black Hole</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: hsl(0, 0%, 5%);
+            color: hsl(0, 0%, 100%);
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            width: 100vw;
+
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            /* background-image: linear-gradient(1deg, hsl(0, 0%, 5%), hsl(0, 0%, 15%)); */
+            background-image: radial-gradient(circle at center, #1f1f1f, #0a0a0a 70%);
+
+        }
+
+        .left {
+            color: hsl(0, 0%, 95%);
+            padding-left: 2rem;
+        }
+
+        a {
+            text-decoration: none;
+            /* Removes underline from links */
+        }
+
+        ul,
+        ol {
+            list-style: none;
+            /* Removes bullets/dots (ul) or numbers (ol) */
+            padding-left: 0;
+            /* Optional: remove default left padding */
+        }
+
+        .topbtns_container {
+            display: flex;
+            gap: 0.5rem;
+            padding-right: 3rem;
+            align-items: center;
+            justify-content: end;
+        }
+
+
+        .topbtn {
+            display: flex;
+            color: hsl(0, 0%, 95%);
+            height: 1.6rem;
+            /* width: 4rem; */
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .topbtn:hover {
+            background-color: hsl(0, 0%, 20%);
+            border-radius: 8px;
+            border: 0.2px solid hsl(0, 0%, 90%);
+
+
+
+        }
+
+
+        .headcontainer {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            padding: 3rem;
+
+
+        }
+
+        .title {
+            align-self: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 1rem;
+        }
+
+        .title #head {
+            font-size: 6rem;
+        }
+
+
+        .typing {
+            display: inline-block;
+            border-right: 2px solid #00ffcc;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink 0.7s step-end infinite alternate;
+            padding-right: 6px;
+
+
+            font-size: 2rem;
+            padding: 4rem;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        } 
+
+        #space{
+            position: relative;
+            width: 1500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="top-bar">
+            <div class="left">
+                <h1>Login and account details</h1>
+            </div>
+
+            <div class="right">
+                <nav>
+                    <ul class="topbtns_container">
+                        <li>
+                            <a class="topbtn" href="login" ">L O G I N</a>
+                        </li>
+                        <li>
+                            <a class="topbtn" href="signup">S I G N U P</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="headcontainer">
+            <div class="title">
+                <h1 id="head">D H E E</h1>
+            </div>
+            <div class="bcontainer">
+                <div class="blackh">
+                    <canvas id="space"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="typing" id="typing"></div>
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const canvas = document.getElementById("space");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let centerX = canvas.width / 2;
+        let centerY = canvas.height / 2;
+
+        class Asteroid {
+            constructor() {
+                this.angle = Math.random() * Math.PI * 2;
+                this.orbitX = 120 + Math.random() * 300;
+                this.orbitY = this.orbitX * (0.7 + Math.random() * 0.3);
+                this.speed = (Math.random() * 0.01) + 0.001;
+                this.size = Math.random() * 3 + 1;
+                this.wobble = (Math.random() - 0.5) * 0.005;
+            }
+
+            update() {
+                this.angle += this.speed + this.wobble * Math.sin(Date.now() * 0.001);
+                this.x = centerX + Math.cos(this.angle) * this.orbitX;
+                this.y = centerY + Math.sin(this.angle) * this.orbitY;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(200,200,200,0.9)";
+                ctx.fill();
+            }
+        }
+
+        function drawBlackHole() {
+            // Event horizon (black core)
+            let gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 100);
+            gradient.addColorStop(0, "#000");
+            gradient.addColorStop(0.6, "#000");
+            gradient.addColorStop(1, "rgba(0,0,0,0)");
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 100, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Accretion disk (glowing swirl)
+            let accretion = ctx.createRadialGradient(centerX, centerY, 40, centerX, centerY, 140);
+            accretion.addColorStop(0, "rgba(255,255,255,0.8)");
+            accretion.addColorStop(0.3, "rgba(255,200,0,0.6)");
+            accretion.addColorStop(0.6, "rgba(255,100,0,0.4)");
+            accretion.addColorStop(1, "rgba(0,0,0,0)");
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 140, 0, Math.PI * 2);
+            ctx.fillStyle = accretion;
+            ctx.fill();
+
+            // Outer glow (gravitational lensing effect)
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 160, 0, Math.PI * 2);
+            ctx.strokeStyle = "rgba(255,255,255,0.2)";
+            ctx.lineWidth = 4;
+            ctx.stroke();
+        }
+
+        // Generate asteroid belt
+        let asteroids = [];
+        for (let i = 0; i < 200; i++) {
+            asteroids.push(new Asteroid());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background stars
+            for (let i = 0; i < 50; i++) {
+                ctx.fillStyle = "white";
+                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
+            }
+
+            drawBlackHole();
+
+            asteroids.forEach(asteroid => {
+                asteroid.update();
+                asteroid.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            centerX = canvas.width / 2;
+            centerY = canvas.height / 2;
+        });
+
+
+
+ 
+
+
+
+
+        const texts = [
+            "Your personal Tutor✨",
+            "Harness the power of AI 🚀",
+            "Honing is the job 🌟"
+        ];
+
+        const typingElement = document.getElementById("typing");
+
+        // Configurable speeds (ms)
+        const TYPING_SPEED = 90;
+        const DELETING_SPEED = 60;
+        const PAUSE_AT_END = 1000;   // pause when a word finishes
+        const PAUSE_AT_START = 500;  // pause before new word begins
+
+        let i = 0;            // which sentence
+        let j = 0;            // how many chars shown
+        let deleting = false; // current mode
+
+        function tick() {
+            const current = texts[i];
+            typingElement.textContent = current.slice(0, j);
+
+            let nextDelay = deleting ? DELETING_SPEED : TYPING_SPEED;
+
+            if (!deleting) {
+                if (j < current.length) {
+                    j++;
+                } else {
+                    deleting = true;
+                    nextDelay = PAUSE_AT_END;
+                }
+            } else {
+                if (j > 0) {
+                    j--;
+                } else {
+                    deleting = false;
+                    i = (i + 1) % texts.length;
+                    nextDelay = PAUSE_AT_START;
+                }
+            }
+
+            setTimeout(tick, nextDelay);
+        }
+
+        tick();
+    </script>
+</body>
+
+</html>

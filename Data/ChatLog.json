@@ -1,0 +1,22 @@
+[
+  {
+    "courseName": "Operating System",
+    "description": "Learn process management, memory management, and file systems.",
+    "duration": "3 months"
+  },
+  {
+    "courseName": "Database Management System",
+    "description": "Covers SQL, relational models, and transactions.",
+    "duration": "2 months"
+  },
+  {
+    "courseName": "Computer Networks",
+    "description": "Understand TCP/IP, routing, and data communication.",
+    "duration": "2.5 months"
+  },
+  {
+    "courseName": "Artificial Intelligence",
+    "description": "Covers ML basics, search algorithms, and neural networks.",
+    "duration": "4 months"
+  }
+]

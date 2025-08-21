@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dhee - Test Page</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      color: #ebdbb2;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 0 1em;
+      background: #3c3836;
+    }
+    h1 {
+      text-align: center;
+    }
+    #controls {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+    #questions {
+      margin-top: 1em;
+    }
+    .question-card {
+      background: #282828;
+      padding: 1em;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question-card.correct {
+      border-left: 6px solid #98971a;
+      background: #79740e;
+    }
+    .question-card.incorrect {
+      border-left: 6px solid #cc241d;
+      background: #9d0006;
+    }
+    .question-card h3 {
+      margin: 0 0 0.5em;
+    }
+    .question-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .question-card li {
+      margin-bottom: 0.5em;
+    }
+    .question-card input[type="radio"] {
+      margin-right: 0.5em;
+    }
+    #result {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>OS - Evaluation</h1>
+  <div id="controls">
+    <button id="pick-btn" disabled>Loading questions…</button>
+    <button id="show-btn" disabled>Show Result</button>
+  </div>
+  <div id="questions"></div>
+  <div id="result"></div>
+
+  <script>
+    let allQuestions = [];
+    let currentQuestions = [];
+
+    fetch('./static/question_bank.json')
+      .then(res => {
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+        return res.json();
+      })
+      .then(bank => {
+        for (const topic in bank) {
+          for (const level in bank[topic]) {
+            bank[topic][level].forEach(q => allQuestions.push({
+              topic, difficulty: level, ...q
+            }));
+          }
+        }
+        const pickBtn = document.getElementById('pick-btn');
+        pickBtn.textContent = 'Begin Test';
+        pickBtn.disabled = false;
+        pickBtn.addEventListener('click', pickAndRender);
+      })
+      .catch(err => {
+        const btn = document.getElementById('pick-btn');
+        btn.textContent = 'Error loading questions';
+        console.error(err);
+      });
+
+    function pickAndRender() {
+      currentQuestions = pickRandomQuestions(10);
+      renderQuestions(currentQuestions);
+      document.getElementById('show-btn').disabled = false;
+      document.getElementById('result').textContent = '';
+    }
+
+    function pickRandomQuestions(n) {
+      const copy = allQuestions.slice();
+      const out = [];
+      for (let i = 0; i < n && copy.length; i++) {
+        out.push(copy.splice(Math.floor(Math.random()*copy.length),1)[0]);
+      }
+      return out;
+    }
+
+    function renderQuestions(list) {
+      const container = document.getElementById('questions');
+      container.innerHTML = '';
+      list.forEach((q,i) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+          <h3>${i+1}. [${q.topic} - ${q.difficulty}] ${q.question}</h3>
+          <ul>
+            ${q.options.map((opt, idx) => `
+              <li>
+                <label>
+                  <input type="radio" name="q${i}" value="${opt}">
+                  ${opt}
+                </label>
+              </li>
+            `).join('')}
+          </ul>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById('show-btn').addEventListener('click', () => {
+      let correctCount = 0;
+      currentQuestions.forEach((q, i) => {
+        const selector = `input[name="q${i}"]:checked`;
+        const selected = document.querySelector(selector);
+        const card = document.getElementsByClassName('question-card')[i];
+        card.classList.remove('correct', 'incorrect');
+        if (selected && selected.value === q.correct) {
+          correctCount++;
+          card.classList.add('correct');
+        } else {
+          card.classList.add('incorrect');
+        }
+      });
+      const fraction = `${correctCount}/${currentQuestions.length}`;
+      document.getElementById('result').textContent = 
+        `Score: ${fraction} (${(correctCount/currentQuestions.length*100).toFixed(0)}%)`;
+    });
+  </script>
+</body>
+</html>

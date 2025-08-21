@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--gruvbox-bg0);
+    color: var(--gruvbox-fg1);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.6;
+}
+
+.login-container, .signup-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.login-card, .signup-card {
+    background: var(--gruvbox-bg1);
+    border-radius: 16px;
+    padding: 40px 32px;
+    box-shadow: 0 20px 25px -5px var(--shadow-dark),
+                0 10px 10px -5px var(--shadow-medium);
+    border: 1px solid var(--gruvbox-bg3);
+}
+
+.login-header, .signup-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-header h1, .signup-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gruvbox-fg1);
+    margin-bottom: 8px;
+}
+
+.login-header p, .signup-header p {
+    color: var(--gruvbox-fg2);
+    font-size: 16px;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gruvbox-fg1);
+    margin-bottom: 4px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    background: var(--gruvbox-bg2);
+    border: 2px solid var(--gruvbox-bg3);
+    border-radius: 8px;
+    color: var(--gruvbox-fg1);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: var(--gruvbox-fg3);
+}
+
+.form-input:focus {
+    border-color: var(--gruvbox-yellow);
+    box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+.form-input:hover {
+    border-color: var(--gruvbox-fg3);
+}
+
+.signin-btn, .signup-btn {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    background: var(--gruvbox-green);
+    color: var(--gruvbox-bg0);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.signin-btn:hover, .signup-btn:hover {
+    background: var(--gruvbox-green-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--button-shadow);
+}
+
+.signin-btn:active, .signup-btn:active {
+    transform: translateY(0);
+}
+
+.login-footer, .signup-footer {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gruvbox-bg2);
+}
+
+.login-footer p, .signup-footer p {
+    color: var(--gruvbox-fg2);
+    font-size: 14px;
+}
+
+.link {
+    color: var(--gruvbox-yellow);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: var(--gruvbox-orange);
+    text-decoration: underline;
+}
+
+.error-messages {
+    background: var(--gruvbox-red-alpha);
+    border: 1px solid var(--gruvbox-red);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+.error-messages ul {
+    list-style: none;
+}
+
+.error-messages li {
+    color: var(--gruvbox-red);
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.success-message {
+    background: var(--gruvbox-green-alpha);
+    border: 1px solid var(--gruvbox-green);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    color: var(--gruvbox-green);
+    font-size: 14px;
+    text-align: center;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.dashboard-card {
+    background: var(--gruvbox-bg1);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 25px -5px var(--shadow-dark);
+    border: 1px solid var(--gruvbox-bg3);
+}
+
+.dashboard-header h1 {
+    font-size: 32px;
+    color: var(--gruvbox-fg1);
+    margin-bottom: 16px;
+}
+
+.dashboard-content {
+    margin: 32px 0;
+    padding: 24px;
+    background: var(--gruvbox-bg2);
+    border-radius: 12px;
+}
+
+.user-info {
+    font-size: 18px;
+    color: var(--gruvbox-fg2);
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    padding: 12px 24px;
+    background: var(--gruvbox-red);
+    color: var(--gruvbox-fg1);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background: var(--gruvbox-orange);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+    .login-card, .signup-card {
+        padding: 24px;
+        margin: 20px;
+    }
+
+    .login-header h1, .signup-header h1 {
+        font-size: 24px;
+    }
+}
