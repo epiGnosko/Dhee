@@ -13,4 +13,4 @@ starlette
 sqlite3
 bycrypt
 typing
-
+itsdangerous
