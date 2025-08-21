@@ -1,6 +1,4 @@
 import uvicorn
-import asyncio
-import os
 from fastapi import FastAPI, HTTPException , WebSocket, WebSocketDisconnect, Request
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -18,7 +16,6 @@ from starlette.middleware.sessions import SessionMiddleware
 import sqlite3
 import bcrypt
 from typing import Optional
-import uvicorn
 
 app = FastAPI(title="Dhee - The learning platform")
 
